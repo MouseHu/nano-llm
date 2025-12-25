@@ -1,0 +1,24 @@
+# .pre-commit-config.yaml
+repos:
+  # 1. 基础文件清理 (来自 pre-commit 官方)
+  # 这些是工业级项目的"卫生习惯"
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0  # 建议定期使用 pre-commit autoupdate 更新版本
+    hooks:
+      - id: trailing-whitespace   # 删除行尾多余空格
+      - id: end-of-file-fixer     # 确保文件以换行符结尾
+      - id: check-yaml            # 检查 yaml 文件语法是否正确
+      - id: check-toml            # 检查 toml 文件语法
+      - id: check-added-large-files # 防止意外提交巨大文件 (如训练模型权重)
+
+  # 2. Ruff 集成 (Linting + Formatting)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # 请注意：Ruff 更新非常频繁，建议使用 pre-commit autoupdate 保持最新
+    rev: v0.1.9
+    hooks:
+      # Run the linter (替代 Flake8, Isort, Pyupgrade)
+      - id: ruff
+        args: [ --fix ]  # 关键参数：自动修复能修复的错误（如自动排序 import）
+
+      # Run the formatter (替代 Black)
+      - id: ruff-format

@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nano-llm"
+version = "0.0.1"
+authors = [
+  { name="Hao Hu", email="mousehu1210@gmail.com" },
+]
+description = "A simple project that trains an LLM and do inference."
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+
+
+[tool.ruff]
+# 设定行宽
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+# 开启的规则集：
+# E: Pycodestyle (标准错误)
+# F: Pyflakes (逻辑错误，如未使用的变量)
+# I: Isort (导入排序 - 必选！)
+# B: Flake8-bugbear (发现潜在 Bug)
+# UP: Pyupgrade (自动将旧语法升级，如 List[str] -> list[str])
+select = ["E", "F", "I", "B", "UP"]
+
+# 忽略的规则（如果需要）
+ignore = []
+
+# 配置 isort (导入排序) 的行为
+[tool.ruff.lint.isort]
+known-first-party = ["nano_llm"] # 将你的项目代码识别为"第一方库"，排在第三方库后面
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["nano_llm"]

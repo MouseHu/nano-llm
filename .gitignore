@@ -1,0 +1,29 @@
+# --- Python 常规 ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- 虚拟环境 (uv 默认创建 .venv) ---
+.venv/
+env/
+venv/
+ENV/
+
+# --- 工具缓存 (加速本地开发，但不提交) ---
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- IDE 配置 ---
+.vscode/
+.idea/
+*.swp
+
+# --- 敏感信息 (绝对不能提交) ---
+.env
+.DS_Store
+
+# --- uv 特定 ---
+# 注意：uv.lock 必须提交！它是保证生产环境和开发环境一致的关键。
